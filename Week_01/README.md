@@ -78,3 +78,55 @@ private static class Node<E> {
 使用场景
 
 Redis中的SortedSet底层实现则是使用了跳表。
+
+
+# 四、栈、队列
+
+## 2.1.Stack栈定义
+
+“LIFO“，后进先出，添加和删除时间复杂度为O(1)，查询O(n)
+
+![image.png](https://cdn.nlark.com/yuque/0/2021/png/1728458/1612587760647-d82e1320-24d7-461d-8af7-a946c060c650.png)
+
+
+
+常用方法
+
+| 方法           | 返回类型 | 备注                                   |
+| -------------- | -------- | -------------------------------------- |
+| empty()        | boolean  | 判断栈内是否为空                       |
+| peek()         | E        | 返回栈顶元素，不对栈顶元素进行任何修改 |
+| pop()          | E        | 删除栈顶元素，并将栈顶元素返回         |
+| push(E item)   | E        | 将元素放入栈顶                         |
+| search(E item) | int      | 返回该元素下标值                       |
+
+## 2.2.Queue队列定义
+
+“FIFO”，先进新出，添加和删除时间复杂度为O(1)，查询O(n)
+
+![image.png](https://cdn.nlark.com/yuque/0/2021/png/1728458/1612587768496-8c1e1b32-7136-498a-b974-250e8ec12886.png)
+
+常用方法
+
+| 方法       | 返回类型 | 备注                                           |
+| ---------- | -------- | ---------------------------------------------- |
+| empty()    | boolean  | 判断队列内是否为空                             |
+| element()  | E        | 返回队列头部元素，但是不删除                   |
+| offer(E e) | boolean  | 将元素插入队列中                               |
+| peek()     | E        | 查询队列的头，如果队列为空，则返回null。       |
+| poll()     | E        | 查询并删除队列的头，如果队列为空，则返回null。 |
+| remove()   | E        | 查询并删除队列的头                             |
+
+队列方法比较
+
+|         | 以下方法会抛出异常 | 以下方法返回特殊值 | 备注                                                         |
+| ------- | ------------------ | ------------------ | ------------------------------------------------------------ |
+| Insert  | add(e)             | offer(e)           | 如果队列满了，调用add则提会抛出IllegalStateException异常，   |
+| Remove  | remove()           | poll()             | 如果队列为空，调用remove则提会抛出NoSuchElementException异常， |
+| Examine | element()          | peek()             | 如果队列为空，调用element则提会抛出NoSuchElementException异常， |
+
+## 2.2.Deque双端队列
+
+queue和stack的结合体，头和尾都可以进出。
+
+![image.png](https://cdn.nlark.com/yuque/0/2021/png/1728458/1612587815422-55ecdb1f-eedd-4c6c-a132-4d71c352152d.png)
