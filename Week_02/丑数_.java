@@ -63,4 +63,25 @@ public class NthUglyNumber {
         }
         return -1;
     }
+
+
+    /**
+     * 解法3:采用动态规划方式
+     * 定义3个指针，分别从下标 0开始，针对3个质因子【2、3、5】分别计算新从丑数，然后取最小数
+     * 依次遍历，直到为n，返回结果
+     */
+    public int nthUglyNumber(int n) {
+        int a = 0,b = 0,c = 0;
+        int[] result =new int[n];
+        result[0] = 1;
+        for (int i = 1; i < n; ++i){
+            int temp1 = result[a] * 2,temp2 = result[b] * 3,temp3 = result[c] * 5;
+            result[i] = Math.min(Math.min(temp1,temp2),temp3);
+            if(result[i] == temp1) a++;
+            if(result[i] == temp2) b++;
+            if(result[i] == temp3) c++;
+        }
+        return result[n-1];
+    }
+
 }
